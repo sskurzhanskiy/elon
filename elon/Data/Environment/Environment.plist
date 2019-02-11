@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Release</key>
+	<dict>
+		<key>twitterCustomerKey</key>
+		<string>JadriPjs9FJwM0FCaUKw</string>
+		<key>twitterCustomerSecret</key>
+		<string>hqWayz0nz7Xg3rvxpS2CpSBVEaGmLwaGtOTu6FzuY</string>
+		<key>baseURL</key>
+		<string>https://api.twitter.com/</string>
+	</dict>
+	<key>Debug</key>
+	<dict>
+		<key>twitterCustomerKey</key>
+		<string>ldvLJO5eWbdAn8FQScOxlQ</string>
+		<key>twitterCustomerSecret</key>
+		<string>Mtr7xjxUQUcuWJadDXPgcHeLIUhenGWEnrsdjwHiYU</string>
+		<key>baseURL</key>
+		<string>https://api.twitter.com/</string>
+	</dict>
+</dict>
+</plist>

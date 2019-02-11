@@ -7,3 +7,5 @@
 */
 
 "main_screen_title" = "Elon Musk";
+"detail_like_text" = "Like";
+"detail_retweet_text" = "Retweet";

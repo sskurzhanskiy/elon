@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class Tweet;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LTweet : NSObject
 
+-(instancetype)initWithTweet:(Tweet*)tweet;
+
+@property (nonatomic, strong) NSString *sid;
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *publishedDate;
+@property (nonatomic, strong) NSString *createDate;
+@property (nonatomic, assign) NSInteger favoritesCount;
+@property (nonatomic, assign) NSInteger retweetCount;
 
 @end
 

@@ -8,13 +8,18 @@
 
 #import "LTweet.h"
 
+#import "Tweet+CoreDataProperties.h"
+
 @implementation LTweet
 
--(instancetype)init
+-(instancetype)initWithTweet:(Tweet*)tweet;
 {
     if(self = [super init]) {
-        self.text = @"Text Text TextText Text Text";
-        self.publishedDate = @"08.02.2019";
+        self.sid = tweet.sid;
+        self.text = tweet.text;
+        self.createDate = tweet.createAt;
+        self.favoritesCount = tweet.favoriteCount;
+        self.retweetCount = tweet.retweetCount;
     }
     
     return self;

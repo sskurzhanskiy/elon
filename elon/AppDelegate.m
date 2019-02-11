@@ -8,7 +8,12 @@
 
 #import "AppDelegate.h"
 
+#import "NetworkManager.h"
+#import "DataManager.h"
+#import "TweetListVM.h"
+
 #import "TweetListViewController.h"
+#import "AuthenticationController.h"
 
 @interface AppDelegate ()
 
@@ -18,13 +23,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    TweetListViewController *tweetListVc = [TweetListViewController new];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tweetListVc];
-    tweetListVc.title = NSLocalizedString(@"main_screen_title", nil);
+    NetworkManager *networkManager = [NetworkManager new];
+    AuthenticationController *vc = [[AuthenticationController alloc] initWithNetworkManager:networkManager];
+    __weak typeof(self) weakSelf = self;
+    vc.authenticationCompletion = ^{
+        [weakSelf launchMainScreen];
+    };
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    window.rootViewController = nc;
+    window.rootViewController = vc;
     self.window = window;
     
     [window makeKeyAndVisible];
@@ -33,30 +40,20 @@
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-}
+#pragma mark - Private methods
 
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+-(void)launchMainScreen
+{
+    DataManager *dataManager = DataManager.instance;
+    TweetListVM *viewModel = [[TweetListVM alloc] initWithDataManager:dataManager];
+    
+    TweetListViewController *tweetListVc = [TweetListViewController new];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tweetListVc];
+    tweetListVc.title = NSLocalizedString(@"main_screen_title", nil);
+    tweetListVc.model = viewModel;
+    
+    self.window.rootViewController = nc;
+    [self.window makeKeyAndVisible];
 }
 
 

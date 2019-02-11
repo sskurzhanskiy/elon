@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TweetListInterface;
+
 @interface TweetListViewController : UIViewController
 
+@property (nonatomic, strong) id<TweetListInterface> model;
 
 @end
 

@@ -8,9 +8,14 @@
 
 #import "TweetListViewController.h"
 
+#import "TweetListInterface.h"
 #import "LTweet.h"
+#import "DetailTweetVM.h"
+
+#import "DetailTweetController.h"
 
 static NSString *cellIdentifier = @"cell-identifier";
+static NSInteger limitTweets = 5;
 
 @interface TweetListViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -26,12 +31,6 @@ static NSString *cellIdentifier = @"cell-identifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSMutableArray *array = [NSMutableArray array];
-    for(int i=0;i<5;++i) {
-        [array addObject:[LTweet new]];
-    }
-    
-    self.tweets = array;
     self.view.backgroundColor = [UIColor redColor];
     self.navigationController.navigationBar.translucent = NO;
     
@@ -40,11 +39,9 @@ static NSString *cellIdentifier = @"cell-identifier";
     tableView.translatesAutoresizingMaskIntoConstraints = NO;
     tableView.dataSource = self;
     tableView.delegate = self;
-//    tableView.hidden = YES;
     tableView.estimatedRowHeight = 0;
     tableView.estimatedSectionHeaderHeight = 0;
     tableView.estimatedSectionFooterHeight = 0;
-//    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     if (@available(iOS 11.0, *)) {
@@ -65,13 +62,23 @@ static NSString *cellIdentifier = @"cell-identifier";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.model fetchTweetsWithCompletion:^(NSArray<LTweet *> * _Nonnull tweets) {
+        if(tweets.count > 0) {
+            weakSelf.tweets = tweets;
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf loadElonTweetCount:limitTweets];
+        }
+    }];
 }
 
 #pragma mark - Handlers
 
 -(void)refreshHeadTableView
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self loadElonTweetCount:limitTweets];
 }
 
 #pragma mark - UITableViewDataSources
@@ -90,7 +97,7 @@ static NSString *cellIdentifier = @"cell-identifier";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     cell.textLabel.text = tweet.text;
-    cell.detailTextLabel.text = tweet.publishedDate;
+    cell.detailTextLabel.text = tweet.createDate;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -102,7 +109,26 @@ static NSString *cellIdentifier = @"cell-identifier";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    LTweet *tweet = self.tweets[indexPath.row];
+    DetailTweetVM *viewModel = [DetailTweetVM new];
+    DetailTweetController *detailController = [[DetailTweetController alloc] initWithTweetSid:tweet.sid];
+    detailController.model = viewModel;
+    [self.navigationController pushViewController:detailController animated:YES];
     NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+#pragma mark - Private methods
+
+-(void)loadElonTweetCount:(NSInteger)count {
+    __weak typeof(self) weakSelf = self;
+    [self.model loadTweetUser:@"elonmusk" count:count successful:^(NSArray<LTweet *> * _Nonnull tweets) {
+        weakSelf.tweets = tweets;
+        [weakSelf.tableView reloadData];
+        [weakSelf.refreshHeadController endRefreshing];
+    } failed:^{
+        NSLog(@"failed");
+        [weakSelf.refreshHeadController endRefreshing];
+    }];
 }
 
 @end

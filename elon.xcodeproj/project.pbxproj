@@ -7,21 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		724495862211A7B80001AFAF /* Tweet+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */; };
+		724495872211A7B80001AFAF /* Tweet+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495852211A7B80001AFAF /* Tweet+CoreDataClass.m */; };
+		7244958A2211A9520001AFAF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495892211A9520001AFAF /* DataManager.m */; };
+		724495972211C1BA0001AFAF /* TweetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495922211C1BA0001AFAF /* TweetListViewController.m */; };
+		724495982211C1BA0001AFAF /* TweetListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495962211C1BA0001AFAF /* TweetListVM.m */; };
+		7244959C2211C1F20001AFAF /* DetailTweetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7244959B2211C1F20001AFAF /* DetailTweetController.m */; };
+		7244959F2211C2200001AFAF /* DetailTweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7244959E2211C2200001AFAF /* DetailTweetView.m */; };
+		724495A32211C9A90001AFAF /* DetailTweetVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495A22211C9A90001AFAF /* DetailTweetVM.m */; };
+		724495AD2211D5F20001AFAF /* AuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495AC2211D5F20001AFAF /* AuthenticationController.m */; };
 		729A0D6A220DB85900724AB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D69220DB85900724AB6 /* AppDelegate.m */; };
-		729A0D6D220DB85900724AB6 /* TweetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D6C220DB85900724AB6 /* TweetListViewController.m */; };
 		729A0D72220DB85A00724AB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 729A0D71220DB85A00724AB6 /* Assets.xcassets */; };
 		729A0D78220DB85B00724AB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D77220DB85B00724AB6 /* main.m */; };
 		729A0D7F220DB9CD00724AB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 729A0D7E220DB9CD00724AB6 /* Localizable.strings */; };
 		729A0D84220DBFCF00724AB6 /* LTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D83220DBFCF00724AB6 /* LTweet.m */; };
 		729A0D87220DC43C00724AB6 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D86220DC43C00724AB6 /* NetworkManager.m */; };
+		729A0D8A2211615500724AB6 /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729A0D892211615500724AB6 /* Environment.plist */; };
+		729A0D8D2211620000724AB6 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D8C2211620000724AB6 /* Environment.m */; };
+		729A0D90221178F900724AB6 /* CDStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D8F221178F900724AB6 /* CDStorage.m */; };
+		729A0D932211892300724AB6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729A0D922211892300724AB6 /* CoreData.framework */; };
+		729A0D98221189F600724AB6 /* elon.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D97221189F600724AB6 /* elon.xcdatamodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		724495822211A7B80001AFAF /* Tweet+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataProperties.h"; sourceTree = "<group>"; };
+		724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tweet+CoreDataProperties.m"; sourceTree = "<group>"; };
+		724495842211A7B80001AFAF /* Tweet+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataClass.h"; sourceTree = "<group>"; };
+		724495852211A7B80001AFAF /* Tweet+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tweet+CoreDataClass.m"; sourceTree = "<group>"; };
+		724495882211A9520001AFAF /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		724495892211A9520001AFAF /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		724495922211C1BA0001AFAF /* TweetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetListViewController.m; sourceTree = "<group>"; };
+		724495932211C1BA0001AFAF /* TweetListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetListVM.h; sourceTree = "<group>"; };
+		724495942211C1BA0001AFAF /* TweetListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetListInterface.h; sourceTree = "<group>"; };
+		724495952211C1BA0001AFAF /* TweetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetListViewController.h; sourceTree = "<group>"; };
+		724495962211C1BA0001AFAF /* TweetListVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetListVM.m; sourceTree = "<group>"; };
+		7244959A2211C1F20001AFAF /* DetailTweetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTweetController.h; sourceTree = "<group>"; };
+		7244959B2211C1F20001AFAF /* DetailTweetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTweetController.m; sourceTree = "<group>"; };
+		7244959D2211C2200001AFAF /* DetailTweetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTweetView.h; sourceTree = "<group>"; };
+		7244959E2211C2200001AFAF /* DetailTweetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTweetView.m; sourceTree = "<group>"; };
+		724495A02211C9100001AFAF /* DetailTweetInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTweetInterface.h; sourceTree = "<group>"; };
+		724495A12211C9A90001AFAF /* DetailTweetVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTweetVM.h; sourceTree = "<group>"; };
+		724495A22211C9A90001AFAF /* DetailTweetVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTweetVM.m; sourceTree = "<group>"; };
+		724495AB2211D5F20001AFAF /* AuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationController.h; sourceTree = "<group>"; };
+		724495AC2211D5F20001AFAF /* AuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationController.m; sourceTree = "<group>"; };
 		729A0D65220DB85900724AB6 /* elon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		729A0D68220DB85900724AB6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		729A0D69220DB85900724AB6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		729A0D6B220DB85900724AB6 /* TweetListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetListViewController.h; sourceTree = "<group>"; };
-		729A0D6C220DB85900724AB6 /* TweetListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetListViewController.m; sourceTree = "<group>"; };
 		729A0D71220DB85A00724AB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		729A0D76220DB85B00724AB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		729A0D77220DB85B00724AB6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -30,6 +61,13 @@
 		729A0D83220DBFCF00724AB6 /* LTweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTweet.m; sourceTree = "<group>"; };
 		729A0D85220DC43C00724AB6 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		729A0D86220DC43C00724AB6 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		729A0D892211615500724AB6 /* Environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
+		729A0D8B2211620000724AB6 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		729A0D8C2211620000724AB6 /* Environment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
+		729A0D8E221178F900724AB6 /* CDStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDStorage.h; sourceTree = "<group>"; };
+		729A0D8F221178F900724AB6 /* CDStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDStorage.m; sourceTree = "<group>"; };
+		729A0D922211892300724AB6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		729A0D97221189F600724AB6 /* elon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = elon.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +75,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				729A0D932211892300724AB6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		724495902211C1BA0001AFAF /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				724495AA2211D5E00001AFAF /* AuthenticationView */,
+				724495992211C1E00001AFAF /* DetailTweetView */,
+				724495912211C1BA0001AFAF /* TweetListView */,
+			);
+			name = GUI;
+			path = elon/GUI;
+			sourceTree = SOURCE_ROOT;
+		};
+		724495912211C1BA0001AFAF /* TweetListView */ = {
+			isa = PBXGroup;
+			children = (
+				724495952211C1BA0001AFAF /* TweetListViewController.h */,
+				724495922211C1BA0001AFAF /* TweetListViewController.m */,
+				724495942211C1BA0001AFAF /* TweetListInterface.h */,
+				724495932211C1BA0001AFAF /* TweetListVM.h */,
+				724495962211C1BA0001AFAF /* TweetListVM.m */,
+			);
+			path = TweetListView;
+			sourceTree = "<group>";
+		};
+		724495992211C1E00001AFAF /* DetailTweetView */ = {
+			isa = PBXGroup;
+			children = (
+				7244959A2211C1F20001AFAF /* DetailTweetController.h */,
+				7244959B2211C1F20001AFAF /* DetailTweetController.m */,
+				7244959D2211C2200001AFAF /* DetailTweetView.h */,
+				7244959E2211C2200001AFAF /* DetailTweetView.m */,
+				724495A02211C9100001AFAF /* DetailTweetInterface.h */,
+				724495A12211C9A90001AFAF /* DetailTweetVM.h */,
+				724495A22211C9A90001AFAF /* DetailTweetVM.m */,
+			);
+			path = DetailTweetView;
+			sourceTree = "<group>";
+		};
+		724495AA2211D5E00001AFAF /* AuthenticationView */ = {
+			isa = PBXGroup;
+			children = (
+				724495AB2211D5F20001AFAF /* AuthenticationController.h */,
+				724495AC2211D5F20001AFAF /* AuthenticationController.m */,
+			);
+			path = AuthenticationView;
+			sourceTree = "<group>";
+		};
 		729A0D5C220DB85900724AB6 = {
 			isa = PBXGroup;
 			children = (
 				729A0D67220DB85900724AB6 /* elon */,
 				729A0D66220DB85900724AB6 /* Products */,
+				729A0D912211892200724AB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,8 +151,6 @@
 				729A0D80220DBFB700724AB6 /* Data */,
 				729A0D68220DB85900724AB6 /* AppDelegate.h */,
 				729A0D69220DB85900724AB6 /* AppDelegate.m */,
-				729A0D6B220DB85900724AB6 /* TweetListViewController.h */,
-				729A0D6C220DB85900724AB6 /* TweetListViewController.m */,
 				729A0D71220DB85A00724AB6 /* Assets.xcassets */,
 				729A0D76220DB85B00724AB6 /* Info.plist */,
 				729A0D77220DB85B00724AB6 /* main.m */,
@@ -78,9 +162,15 @@
 		729A0D80220DBFB700724AB6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				724495902211C1BA0001AFAF /* GUI */,
+				729A0D882211610800724AB6 /* Environment */,
 				729A0D81220DBFB700724AB6 /* Model */,
 				729A0D85220DC43C00724AB6 /* NetworkManager.h */,
 				729A0D86220DC43C00724AB6 /* NetworkManager.m */,
+				729A0D8E221178F900724AB6 /* CDStorage.h */,
+				729A0D8F221178F900724AB6 /* CDStorage.m */,
+				724495882211A9520001AFAF /* DataManager.h */,
+				724495892211A9520001AFAF /* DataManager.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -88,10 +178,33 @@
 		729A0D81220DBFB700724AB6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				724495842211A7B80001AFAF /* Tweet+CoreDataClass.h */,
+				724495852211A7B80001AFAF /* Tweet+CoreDataClass.m */,
+				724495822211A7B80001AFAF /* Tweet+CoreDataProperties.h */,
+				724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */,
+				729A0D97221189F600724AB6 /* elon.xcdatamodel */,
 				729A0D82220DBFCF00724AB6 /* LTweet.h */,
 				729A0D83220DBFCF00724AB6 /* LTweet.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		729A0D882211610800724AB6 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				729A0D892211615500724AB6 /* Environment.plist */,
+				729A0D8B2211620000724AB6 /* Environment.h */,
+				729A0D8C2211620000724AB6 /* Environment.m */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		729A0D912211892200724AB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				729A0D922211892300724AB6 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				729A0D72220DB85A00724AB6 /* Assets.xcassets in Resources */,
+				729A0D8A2211615500724AB6 /* Environment.plist in Resources */,
 				729A0D7F220DB9CD00724AB6 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,10 +278,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				729A0D84220DBFCF00724AB6 /* LTweet.m in Sources */,
-				729A0D6D220DB85900724AB6 /* TweetListViewController.m in Sources */,
+				7244959F2211C2200001AFAF /* DetailTweetView.m in Sources */,
+				724495982211C1BA0001AFAF /* TweetListVM.m in Sources */,
+				729A0D8D2211620000724AB6 /* Environment.m in Sources */,
+				729A0D98221189F600724AB6 /* elon.xcdatamodel in Sources */,
+				724495872211A7B80001AFAF /* Tweet+CoreDataClass.m in Sources */,
+				7244959C2211C1F20001AFAF /* DetailTweetController.m in Sources */,
 				729A0D78220DB85B00724AB6 /* main.m in Sources */,
+				724495972211C1BA0001AFAF /* TweetListViewController.m in Sources */,
+				724495AD2211D5F20001AFAF /* AuthenticationController.m in Sources */,
+				724495862211A7B80001AFAF /* Tweet+CoreDataProperties.m in Sources */,
+				729A0D90221178F900724AB6 /* CDStorage.m in Sources */,
 				729A0D87220DC43C00724AB6 /* NetworkManager.m in Sources */,
+				7244958A2211A9520001AFAF /* DataManager.m in Sources */,
 				729A0D6A220DB85900724AB6 /* AppDelegate.m in Sources */,
+				724495A32211C9A90001AFAF /* DetailTweetVM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +414,7 @@
 		729A0D7C220DB85B00724AB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
@@ -308,6 +434,7 @@
 		729A0D7D220DB85B00724AB6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
