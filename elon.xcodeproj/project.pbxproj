@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72085B3D2212040A009D9A20 /* LDetailTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72085B3C2212040A009D9A20 /* LDetailTweet.m */; };
 		724495862211A7B80001AFAF /* Tweet+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */; };
 		724495872211A7B80001AFAF /* Tweet+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495852211A7B80001AFAF /* Tweet+CoreDataClass.m */; };
 		7244958A2211A9520001AFAF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495892211A9520001AFAF /* DataManager.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		72085B3B2212040A009D9A20 /* LDetailTweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LDetailTweet.h; sourceTree = "<group>"; };
+		72085B3C2212040A009D9A20 /* LDetailTweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDetailTweet.m; sourceTree = "<group>"; };
 		724495822211A7B80001AFAF /* Tweet+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataProperties.h"; sourceTree = "<group>"; };
 		724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tweet+CoreDataProperties.m"; sourceTree = "<group>"; };
 		724495842211A7B80001AFAF /* Tweet+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				729A0D97221189F600724AB6 /* elon.xcdatamodel */,
 				729A0D82220DBFCF00724AB6 /* LTweet.h */,
 				729A0D83220DBFCF00724AB6 /* LTweet.m */,
+				72085B3B2212040A009D9A20 /* LDetailTweet.h */,
+				72085B3C2212040A009D9A20 /* LDetailTweet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				7244959F2211C2200001AFAF /* DetailTweetView.m in Sources */,
 				724495982211C1BA0001AFAF /* TweetListVM.m in Sources */,
 				729A0D8D2211620000724AB6 /* Environment.m in Sources */,
+				72085B3D2212040A009D9A20 /* LDetailTweet.m in Sources */,
 				729A0D98221189F600724AB6 /* elon.xcdatamodel in Sources */,
 				724495872211A7B80001AFAF /* Tweet+CoreDataClass.m in Sources */,
 				7244959C2211C1F20001AFAF /* DetailTweetController.m in Sources */,
@@ -418,7 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ZD4Q8XJ52;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = elon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -438,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ZD4Q8XJ52;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = elon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (

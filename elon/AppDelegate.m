@@ -23,11 +23,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NetworkManager *networkManager = [NetworkManager new];
-    AuthenticationController *vc = [[AuthenticationController alloc] initWithNetworkManager:networkManager];
+    AuthenticationController *vc = [AuthenticationController new];
     __weak typeof(self) weakSelf = self;
-    vc.authenticationCompletion = ^{
-        [weakSelf launchMainScreen];
+    vc.didAppear = ^{
+        [DataManager.instance authenticationWithCompletion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf launchMainScreen];
+            });
+        } failed:nil];
     };
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
@@ -52,8 +55,14 @@
     tweetListVc.title = NSLocalizedString(@"main_screen_title", nil);
     tweetListVc.model = viewModel;
     
-    self.window.rootViewController = nc;
-    [self.window makeKeyAndVisible];
+    UIWindow *window = self.window;
+    window.rootViewController = nc;
+    [UIView transitionWithView:[UIApplication sharedApplication].keyWindow
+                      duration:0.3
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        window.rootViewController = nc;
+                    } completion:nil];
 }
 
 

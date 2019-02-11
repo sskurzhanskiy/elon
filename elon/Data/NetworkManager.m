@@ -36,14 +36,6 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     if(self = [super init]) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:configuration];
-        
-        if(self.token == nil) {
-            [self authenticationWithCompletion:^(NSDictionary *dict) {
-                self.token = dict[@"access_token"];
-            } failed:^{
-                self.token = nil;
-            }];
-        }
     }
     
     return self;

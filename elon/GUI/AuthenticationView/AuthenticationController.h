@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithNetworkManager:(NetworkManager*)networkManager;
 
+@property (nonatomic, copy) void(^didAppear)(void);
 @property (nonatomic, copy) void(^authenticationCompletion)(void);
 
 @end

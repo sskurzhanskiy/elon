@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)instance;
 
+-(void)authenticationWithCompletion:(nullable void(^)(void))successfulBlock failed:(nullable void(^)(void))failedBlock;
 -(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<Tweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock;
 -(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(Tweet*tweet))successfulBlock failed:(void(^)(void))failedBlock;
 -(void)fetchTweetsWithCompletion:(void(^)(NSArray<Tweet*>*tweets))completionBlock;

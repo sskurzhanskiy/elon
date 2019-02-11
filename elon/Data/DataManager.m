@@ -42,6 +42,19 @@
     return self;
 }
 
+-(void)authenticationWithCompletion:(void(^)(void))successfulBlock failed:(void(^)(void))failedBlock
+{
+    [self.networkManager authenticationWithCompletion:^(NSDictionary *dict) {
+        if(successfulBlock) {
+            successfulBlock();
+        }
+    } failed:^{
+        if(failedBlock) {
+            failedBlock();
+        }
+    }];
+}
+
 -(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<Tweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock
 {
     __weak typeof(self) weakSelf = self;

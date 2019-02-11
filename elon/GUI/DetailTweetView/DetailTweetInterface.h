@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class LTweet;
+@class LDetailTweet;
 
 @protocol DetailTweetInterface <NSObject>
 
--(void)loadTweetWithSid:(NSString*)sid successful:(void(^)(LTweet*))successfulBlock failed:(void(^)(void))failed;
+-(void)loadTweetWithSid:(NSString*)sid successful:(void(^)(LDetailTweet*))successfulBlock failed:(void(^)(void))failed;
 
 @end
 

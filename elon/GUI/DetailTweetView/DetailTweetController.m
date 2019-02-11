@@ -9,7 +9,7 @@
 #import "DetailTweetController.h"
 
 #import "DetailTweetInterface.h"
-#import "LTweet.h"
+#import "LDetailTweet.h"
 
 #import "DetailTweetView.h"
 
@@ -53,7 +53,7 @@
     [super viewWillAppear:animated];
     
     __weak typeof(self) weakSelf = self;
-    [self.model loadTweetWithSid:self.tweetSid successful:^(LTweet * tweet) {
+    [self.model loadTweetWithSid:self.tweetSid successful:^(LDetailTweet * tweet) {
         weakSelf.detailView.textLabel.text = tweet.text;
         weakSelf.detailView.likeCountLabel.text = [NSString stringWithFormat:@"%ld", (long)tweet.favoritesCount];
         weakSelf.detailView.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", (long)tweet.retweetCount];

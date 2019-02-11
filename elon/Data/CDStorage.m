@@ -42,7 +42,6 @@ static NSString *const CDModelFileName = @"elon";
         self.mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         self.mainContext.persistentStoreCoordinator = self.mainCoordinator;
         
-        // background
         self.backgroundCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.objectModel];
         if (![self.backgroundCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
             NSAssert(false, @"Fail to add persistentStore");
@@ -74,6 +73,11 @@ static NSString *const CDModelFileName = @"elon";
     }
 }
 
+-(Tweet*)tweetWithSid:(NSString*)tweetSid
+{
+    return [self tweetWithSid:tweetSid context:self.mainContext];
+}
+
 -(void)addTweet:(NSDictionary*)srcTweet
 {
     NSString *tweetSid = srcTweet[@"id_str"];
@@ -91,11 +95,6 @@ static NSString *const CDModelFileName = @"elon";
     }
 }
 
--(Tweet*)tweetWithSid:(NSString*)tweetSid
-{
-    return [self tweetWithSid:tweetSid context:self.mainContext];
-}
-
 #pragma mark - Notifications
 
 -(void)mocDidSaveNotification:(NSNotification *)notification {
@@ -109,11 +108,6 @@ static NSString *const CDModelFileName = @"elon";
 }
 
 #pragma mark - Private methods
-
--(NSDictionary *)persistentStoreOptions {
-    return @{ NSInferMappingModelAutomaticallyOption: @YES,
-              NSMigratePersistentStoresAutomaticallyOption: @YES};
-}
 
 +(NSURL*)storeURL {
     NSString *storeFilename = [NSString stringWithFormat:@"%@.sqlite", CDSQLFileName];

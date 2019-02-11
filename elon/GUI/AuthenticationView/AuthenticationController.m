@@ -13,6 +13,8 @@
 @interface AuthenticationController ()
 
 @property (nonatomic, weak) UIActivityIndicatorView *spinner;
+@property (nonatomic, weak) UILabel *errorLabel;
+
 @property (nonatomic, strong) NetworkManager *networkManager;
 
 @end
@@ -31,9 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:spinner];
     self.spinner = spinner;
     
@@ -43,18 +46,24 @@
     [spinner startAnimating];
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
-    __weak typeof(self) weakSelf = self;
-    [self.networkManager authenticationWithCompletion:^(NSDictionary *map) {
-        void (^handler)(void) = weakSelf.authenticationCompletion;
-        if(handler) {
-            handler();
-        }
-    } failed:^{
-    }];
+    void (^handler)(void) = self.didAppear;
+    if(handler) {
+        handler();
+    }
+    
+//    __weak typeof(self) weakSelf = self;
+//    [self.networkManager authenticationWithCompletion:^(NSDictionary *map) {
+//        [weakSelf dismissViewControllerAnimated:NO completion:nil];
+//        void (^handler)(void) = weakSelf.authenticationCompletion;
+//        if(handler) {
+//            handler();
+//        }
+//    } failed:^{
+//    }];
 }
 
 @end

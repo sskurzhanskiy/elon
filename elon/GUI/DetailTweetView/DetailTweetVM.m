@@ -9,15 +9,15 @@
 #import "DetailTweetVM.h"
 
 #import "Tweet+CoreDataProperties.h"
-#import "LTweet.h"
+#import "LDetailTweet.h"
 #import "DataManager.h"
 
 @implementation DetailTweetVM
 
--(void)loadTweetWithSid:(NSString*)sid successful:(void(^)(LTweet*))successfulBlock failed:(void(^)(void))failed
+-(void)loadTweetWithSid:(NSString*)sid successful:(void(^)(LDetailTweet*))successfulBlock failed:(void(^)(void))failed
 {
     [DataManager.instance loadTweetWithSid:sid successful:^(Tweet * _Nonnull tweet) {
-        LTweet *lTweet = [[LTweet alloc] initWithTweet:tweet];
+        LDetailTweet *lTweet = [[LDetailTweet alloc] initWithTweet:tweet];
         if(successfulBlock) {
             successfulBlock(lTweet);
         }

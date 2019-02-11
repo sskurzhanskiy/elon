@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *sid;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *createDate;
-@property (nonatomic, assign) NSInteger favoritesCount;
-@property (nonatomic, assign) NSInteger retweetCount;
 
 @end
 

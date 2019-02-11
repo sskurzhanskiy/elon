@@ -1,23 +1,24 @@
 //
-//  LTweet.m
+//  LDetailTweet.m
 //  elon
 //
-//  Created by Sergey Skurzhanskiy on 08/02/2019.
+//  Created by Sergey Skurzhanskiy on 11.02.2019.
 //  Copyright © 2019 Sergey Skurzhanskiy. All rights reserved.
 //
 
-#import "LTweet.h"
+#import "LDetailTweet.h"
 
 #import "Tweet+CoreDataProperties.h"
 
-@implementation LTweet
+@implementation LDetailTweet
 
 -(instancetype)initWithTweet:(Tweet*)tweet;
 {
     if(self = [super init]) {
-        self.sid = tweet.sid;
         self.text = tweet.text;
-        self.createDate = tweet.createAt;    }
+        self.favoritesCount = tweet.favoriteCount;
+        self.retweetCount = tweet.retweetCount;
+    }
     
     return self;
 }
