@@ -63,7 +63,7 @@ static NSString *const CDModelFileName = @"elon";
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescriptor];
     
-    NSArray* sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"createAt" ascending:NO] ];
+    NSArray* sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] ];
     [request setSortDescriptors:sortDescriptors];
     
     NSError* error = nil;
@@ -83,7 +83,7 @@ static NSString *const CDModelFileName = @"elon";
     [request setEntity:entityDescriptor];
     request.fetchLimit = count;
     
-    NSArray* sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"createAt" ascending:NO] ];
+    NSArray* sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] ];
     [request setSortDescriptors:sortDescriptors];
     
     NSError* error = nil;

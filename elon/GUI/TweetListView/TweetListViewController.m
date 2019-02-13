@@ -97,7 +97,7 @@ static NSInteger limitTweets = 5;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     cell.textLabel.text = tweet.text;
-    cell.detailTextLabel.text = tweet.createDate;
+    cell.detailTextLabel.text = tweet.customDateString;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

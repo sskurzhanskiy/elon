@@ -20,5 +20,6 @@
 @dynamic text;
 @dynamic retweetCount;
 @dynamic favoriteCount;
+@dynamic timestamp;
 
 @end

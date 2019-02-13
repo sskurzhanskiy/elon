@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *sid;
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSString *createDate;
+@property (nonatomic, assign) double timestamp;
+@property (nonatomic, copy) NSString *customDateString;
 
 @end
 

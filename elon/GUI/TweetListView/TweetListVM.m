@@ -36,7 +36,8 @@
     [self.dataManager loadTweetUser:screenUser count:count successful:^(NSArray<Tweet *> * _Nonnull tweets) {
         NSMutableArray *result = [NSMutableArray array];
         for(Tweet *tweet in tweets) {
-            [result addObject:[self createLTweetFromTweet:tweet]];
+            LTweet *lTweet = [[LTweet alloc] initWithTweet:tweet];
+            [result addObject:lTweet];
         }
         
         if(successfulBlock) {
@@ -56,7 +57,8 @@
     [self.dataManager fetchTweetsCount:count completion:^(NSArray<Tweet *> * _Nonnull tweets) {
         NSMutableArray *result = [NSMutableArray array];
         for(Tweet *tweet in tweets) {
-            [result addObject:[self createLTweetFromTweet:tweet]];
+            LTweet *lTweet = [[LTweet alloc] initWithTweet:tweet];
+            [result addObject:lTweet];
         }
         
         if(completionBlock) {
@@ -65,18 +67,6 @@
             });
         }
     }];
-}
-
-#pragma mark - Private methods
-
--(LTweet*)createLTweetFromTweet:(Tweet*)tweet
-{
-    LTweet *lTweet = [LTweet new];
-    lTweet.sid = tweet.sid;
-    lTweet.text = tweet.text;
-    lTweet.createDate = tweet.createAt;
-    
-    return lTweet;
 }
 
 @end

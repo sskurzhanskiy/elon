@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *text;
 @property (nonatomic) int32_t retweetCount;
 @property (nonatomic) int32_t favoriteCount;
+@property (nonatomic) double_t timestamp;
 
 @end
 
