@@ -10,8 +10,8 @@
 
 @interface Environment ()
 
-@property (strong, nonatomic) NSString *environment;
-@property (strong, nonatomic) NSDictionary *variables;
+@property (copy, nonatomic) NSString *environment;
+@property (copy, nonatomic) NSDictionary *variables;
 
 @end
 

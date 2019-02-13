@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)sharedEnvironment;
 
-@property (nonatomic, strong, readonly) NSString *twitterKey;
-@property (nonatomic, strong, readonly) NSString *twitterSecter;
-@property (nonatomic, strong, readonly) NSString *baseURL;
+@property (nonatomic, copy, readonly) NSString *twitterKey;
+@property (nonatomic, copy, readonly) NSString *twitterSecter;
+@property (nonatomic, copy, readonly) NSString *baseURL;
 
 @end
 

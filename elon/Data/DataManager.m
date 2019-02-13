@@ -64,7 +64,7 @@
         }
         
         if(successfulBlock) {
-            successfulBlock([weakSelf.dataStorage allTweets]);
+            successfulBlock([weakSelf.dataStorage tweetsCount:count]);
         }
     } failed:^{
         if(failedBlock) {
@@ -91,10 +91,10 @@
     }];
 }
 
--(void)fetchTweetsWithCompletion:(void(^)(NSArray<Tweet*>*tweets))completionBlock
+-(void)fetchTweetsCount:(NSInteger)count completion:(void(^)(NSArray<Tweet*>*tweets))completionBlock
 {
     if(completionBlock) {
-        completionBlock([self.dataStorage allTweets]);
+        completionBlock([self.dataStorage tweetsCount:count]);
     }
 }
 

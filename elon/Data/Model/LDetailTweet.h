@@ -14,7 +14,7 @@
 
 -(instancetype)initWithTweet:(Tweet*)tweet;
 
-@property (nonatomic, strong) NSString *text;
+@property (nonatomic, copy) NSString *text;
 @property (nonatomic, assign) NSInteger favoritesCount;
 @property (nonatomic, assign) NSInteger retweetCount;
 

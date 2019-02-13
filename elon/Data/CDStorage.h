@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CDStorage : NSObject
 
 -(NSArray<Tweet*>*)allTweets;
+-(NSArray<Tweet*>*)tweetsCount:(NSInteger)count;
 -(Tweet*)tweetWithSid:(NSString*)tweetSid;
 -(void)addTweet:(NSDictionary*)srcTweet;
 

@@ -16,7 +16,7 @@
 @interface DetailTweetController ()
 
 @property (nonatomic, weak) DetailTweetView *detailView;
-@property (nonatomic, strong) NSString *tweetSid;
+@property (nonatomic, copy) NSString *tweetSid;
 
 @end
 

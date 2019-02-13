@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithTweet:(Tweet*)tweet;
 
-@property (nonatomic, strong) NSString *sid;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *createDate;
+@property (nonatomic, copy) NSString *sid;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *createDate;
 
 @end
 

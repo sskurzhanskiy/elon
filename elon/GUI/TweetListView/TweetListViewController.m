@@ -22,7 +22,7 @@ static NSInteger limitTweets = 5;
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIRefreshControl *refreshHeadController;
 
-@property (nonatomic, strong) NSArray<LTweet*> *tweets;
+@property (nonatomic, copy) NSArray<LTweet*> *tweets;
 
 @end
 
@@ -64,7 +64,7 @@ static NSInteger limitTweets = 5;
     [super viewWillAppear:animated];
     
     __weak typeof(self) weakSelf = self;
-    [self.model fetchTweetsWithCompletion:^(NSArray<LTweet *> * _Nonnull tweets) {
+    [self.model fetchLastTweetsCount:limitTweets completion:^(NSArray<LTweet *> * _Nonnull tweets) {
         if(tweets.count > 0) {
             weakSelf.tweets = tweets;
             [weakSelf.tableView reloadData];
@@ -114,7 +114,6 @@ static NSInteger limitTweets = 5;
     DetailTweetController *detailController = [[DetailTweetController alloc] initWithTweetSid:tweet.sid];
     detailController.model = viewModel;
     [self.navigationController pushViewController:detailController animated:YES];
-    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 #pragma mark - Private methods

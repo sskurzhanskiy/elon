@@ -24,8 +24,8 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
 
 @interface NetworkManager()
 
-@property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSString *token;
+@property (nonatomic, copy) NSURLSession *session;
+@property (nonatomic, copy) NSString *token;
 
 @end
 

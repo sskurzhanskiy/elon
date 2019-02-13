@@ -41,7 +41,7 @@
         
         if(successfulBlock) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                successfulBlock(result);
+                successfulBlock([result copy]);
             });
         }
     } failed:^{
@@ -51,9 +51,9 @@
     }];
 }
 
--(void)fetchTweetsWithCompletion:(void(^)(NSArray<LTweet*>*tweets))completionBlock
+-(void)fetchLastTweetsCount:(NSInteger)count completion:(void(^)(NSArray<LTweet*>*tweets))completionBlock
 {
-    [self.dataManager fetchTweetsWithCompletion:^(NSArray<Tweet *> * _Nonnull tweets) {
+    [self.dataManager fetchTweetsCount:count completion:^(NSArray<Tweet *> * _Nonnull tweets) {
         NSMutableArray *result = [NSMutableArray array];
         for(Tweet *tweet in tweets) {
             [result addObject:[self createLTweetFromTweet:tweet]];
@@ -61,7 +61,7 @@
         
         if(completionBlock) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                completionBlock(result);
+                completionBlock([result copy]);
             });
         }
     }];

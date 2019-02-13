@@ -63,6 +63,29 @@ static NSString *const CDModelFileName = @"elon";
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescriptor];
     
+    NSArray* sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"createAt" ascending:NO] ];
+    [request setSortDescriptors:sortDescriptors];
+    
+    NSError* error = nil;
+    NSArray* resultSet = [self.mainContext executeFetchRequest:request error:&error];
+    if(resultSet == nil) {
+        NSLog( @"%s %@", __PRETTY_FUNCTION__, error );
+        return nil;
+    } else {
+        return resultSet;
+    }
+}
+
+-(NSArray<Tweet*>*)tweetsCount:(NSInteger)count
+{
+    NSEntityDescription *entityDescriptor = [NSEntityDescription entityForName:@"Tweet" inManagedObjectContext:self.mainContext];
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescriptor];
+    request.fetchLimit = count;
+    
+    NSArray* sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"createAt" ascending:NO] ];
+    [request setSortDescriptors:sortDescriptors];
+    
     NSError* error = nil;
     NSArray* resultSet = [self.mainContext executeFetchRequest:request error:&error];
     if(resultSet == nil) {

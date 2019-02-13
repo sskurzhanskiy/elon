@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol TweetListInterface <NSObject>
 
 -(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<LTweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock;
--(void)fetchTweetsWithCompletion:(void(^)(NSArray<LTweet*>*tweets))completionBlock;
+-(void)fetchLastTweetsCount:(NSInteger)count completion:(void(^)(NSArray<LTweet*>*tweets))completionBlock;
 
 @end
 
