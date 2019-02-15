@@ -11,6 +11,7 @@
 #import "NetworkManager.h"
 #import "CDStorage.h"
 #import "Tweet+CoreDataProperties.h"
+#import "TweetResponse.h"
 
 @interface DataManager()
 
@@ -44,11 +45,11 @@
 
 -(void)authenticationWithCompletion:(void(^)(void))successfulBlock failed:(void(^)(void))failedBlock
 {
-    [self.networkManager authenticationWithCompletion:^(NSDictionary *dict) {
+    [self.networkManager authenticationWithCompletion:^{
         if(successfulBlock) {
             successfulBlock();
         }
-    } failed:^{
+    } failed:^(NSError *error){
         if(failedBlock) {
             failedBlock();
         }
@@ -73,20 +74,20 @@
     }];
 }
 
--(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(Tweet*tweet))successfulBlock failed:(void(^)(void))failedBlock
+-(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(Tweet*tweet))successfulBlock failed:(void(^)(NSError*))failedBlock
 {
     __weak typeof(self) weakSelf = self;
-    [self.networkManager loadTweetWithSid:tweetSid successful:^(NSDictionary * tweetSrc) {
-        [weakSelf.dataStorage addTweet:tweetSrc];
+    [self.networkManager loadTweetWithSid:tweetSid successful:^(TweetResponse * tweetResponse) {
+        [weakSelf.dataStorage addTweet:tweetResponse];
         
         if(successfulBlock) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 successfulBlock([weakSelf.dataStorage tweetWithSid:tweetSid]);
             });
         }
-    } failed:^{
+    } failed:^(NSError *error){
         if(failedBlock) {
-            failedBlock();
+            failedBlock(error);
         }
     }];
 }

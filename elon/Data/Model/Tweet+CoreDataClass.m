@@ -9,6 +9,8 @@
 
 #import "Tweet+CoreDataClass.h"
 
+#import "TweetResponse.h"
+
 static NSDateFormatter* dateFormatter()
 {
     static NSDateFormatter *dateFormatter = nil;
@@ -23,14 +25,14 @@ static NSDateFormatter* dateFormatter()
 
 @implementation Tweet
 
--(void)updateWithSource:(NSDictionary*)src
+-(void)updateWithSource:(TweetResponse*)response
 {
-    self.createAt = src[@"created_at"];
-    self.text = src[@"text"];
-    self.favoriteCount = [src[@"favorite_count"] intValue];
-    self.retweetCount = [src[@"retweet_count"] intValue];
+    self.createAt = response.createdAt;
+    self.text = response.text;
+    self.favoriteCount = (int)response.favoriteCount;
+    self.retweetCount = (int)response.retweetCount;
     
-    NSDate *date = [dateFormatter() dateFromString:src[@"created_at"]];
+    NSDate *date = [dateFormatter() dateFromString:response.createdAt];
     self.timestamp = date.timeIntervalSince1970;
 }
 

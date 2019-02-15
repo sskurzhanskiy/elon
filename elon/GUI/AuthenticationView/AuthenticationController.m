@@ -54,16 +54,6 @@
     if(handler) {
         handler();
     }
-    
-//    __weak typeof(self) weakSelf = self;
-//    [self.networkManager authenticationWithCompletion:^(NSDictionary *map) {
-//        [weakSelf dismissViewControllerAnimated:NO completion:nil];
-//        void (^handler)(void) = weakSelf.authenticationCompletion;
-//        if(handler) {
-//            handler();
-//        }
-//    } failed:^{
-//    }];
 }
 
 @end

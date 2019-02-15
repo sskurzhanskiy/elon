@@ -61,8 +61,8 @@
         [UIView animateWithDuration:0.3 animations:^{
             weakSelf.detailView.alpha = 1;
         }];
-    } failed:^{
-        NSLog(@"error");
+    } failed:^(NSError *error){
+        NSLog(@"%@", error);
     }];
 }
 

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class TweetResponse;
 @class Tweet;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray<Tweet*>*)allTweets;
 -(NSArray<Tweet*>*)tweetsCount:(NSInteger)count;
 -(Tweet*)tweetWithSid:(NSString*)tweetSid;
--(void)addTweet:(NSDictionary*)srcTweet;
+
+-(void)addTweet:(TweetResponse*)tweetResponse;
 
 @end
 

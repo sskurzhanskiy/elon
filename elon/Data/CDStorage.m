@@ -9,6 +9,7 @@
 #import "CDStorage.h"
 
 #import "Tweet+CoreDataClass.h"
+#import "TweetResponse.h"
 
 static NSString *const CDSQLFileName = @"elon";
 static NSString *const CDModelFileName = @"elon";
@@ -101,15 +102,13 @@ static NSString *const CDModelFileName = @"elon";
     return [self tweetWithSid:tweetSid context:self.mainContext];
 }
 
--(void)addTweet:(NSDictionary*)srcTweet
+-(void)addTweet:(TweetResponse*)tweetResponse
 {
-    NSString *tweetSid = srcTweet[@"id_str"];
-    Tweet *tweet = [self tweetWithSid:tweetSid context:self.backgroundContext];
+    Tweet *tweet = [self tweetWithSid:tweetResponse.sid context:self.backgroundContext];
     if(tweet == nil) {
         tweet = [self createNewTweetEntity];
-        tweet.sid = tweetSid;
     }
-    [tweet updateWithSource:srcTweet];
+    [tweet updateWithSource:tweetResponse];
     
     NSError *error = nil;
     [self.backgroundContext save:&error];

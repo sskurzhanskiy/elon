@@ -14,16 +14,16 @@
 
 @implementation DetailTweetVM
 
--(void)loadTweetWithSid:(NSString*)sid successful:(void(^)(LDetailTweet*))successfulBlock failed:(void(^)(void))failed
+-(void)loadTweetWithSid:(NSString*)sid successful:(void(^)(LDetailTweet*))successfulBlock failed:(void(^)(NSError*))failed
 {
     [DataManager.instance loadTweetWithSid:sid successful:^(Tweet * _Nonnull tweet) {
         LDetailTweet *lTweet = [[LDetailTweet alloc] initWithTweet:tweet];
         if(successfulBlock) {
             successfulBlock(lTweet);
         }
-    } failed:^{
+    } failed:^(NSError *error){
         if(failed) {
-            failed();
+            failed(error);
         }
     }];
 }

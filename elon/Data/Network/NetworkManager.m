@@ -9,6 +9,8 @@
 #import "NetworkManager.h"
 
 #import "Environment.h"
+#import "AuthenticationResponse.h"
+#import "TweetResponse.h"
 
 static NSString *tokenUDKey = @"token-user-defaults-key";
 
@@ -41,11 +43,11 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     return self;
 }
 
--(void)authenticationWithCompletion:(void(^)(NSDictionary*))successfulBlock failed:(void(^)(void))failedBlock
+-(void)authenticationWithCompletion:(void(^ _Nullable )(void))successfulBlock failed:(void(^)(NSError*))failedBlock
 {
     if(self.token) {
         if(successfulBlock) {
-            successfulBlock(nil);
+            successfulBlock();
         }
         
         return;
@@ -62,31 +64,26 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     [request addValue:httpHeaderValue forHTTPHeaderField:@"Authorization"];
     [request setHTTPBody:parameters];
     
-    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if([(NSHTTPURLResponse*)response statusCode]/200 == 0 || error) {
+    __weak typeof(self) weakSelf = self;
+    [self resumeTaskWithRequest:request successful:^(id object) {
+        NSError *error = nil;
+        AuthenticationResponse *response = [[AuthenticationResponse alloc] initWithObject:object error:&error];
+        if(error) {
             if(failedBlock) {
-                failedBlock();
+                failedBlock(error);
             }
             return;
         }
-        
-        NSError* sError = nil;
-        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&sError];
-        if(object == nil) {return;}
-        
-        if(object[@"errors"]) {
-            self.token = nil;
-            if(failedBlock) {
-                failedBlock();
-            }
-        }
-        
-        self.token = object[@"access_token"];
+        weakSelf.token = response.accessToken;
         if(successfulBlock) {
-            successfulBlock(object);
+            successfulBlock();
+        }
+    } failed:^(NSError *error) {
+        weakSelf.token = nil;
+        if(failedBlock) {
+            failedBlock(error);
         }
     }];
-    [task resume];
 }
 
 -(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray*))successfulBlock failed:(void(^)(void))failedBlock {
@@ -102,35 +99,18 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     [request addValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:tokenHeader forHTTPHeaderField:@"Authorization"];
 
-    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if([(NSHTTPURLResponse*)response statusCode]/200 == 0 || error) {
-            if(failedBlock) {
-                failedBlock();
-            }
-            return;
-        }
-        
-        NSError* sError = nil;
-        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&sError];
-        if(object == nil) {return;}
-        
-        if([object isKindOfClass:NSDictionary.class]) {
-            if(object[@"errors"]) {
-                if(failedBlock) {
-                    failedBlock();
-                }
-            }
-            return;
-        }
-        
+    [self resumeTaskWithRequest:request successful:^(id object) {
         if(successfulBlock) {
-            successfulBlock(object);
+            successfulBlock((NSArray*)object);
+        }
+    } failed:^(NSError *error) {
+        if(failedBlock) {
+            failedBlock();
         }
     }];
-    [task resume];
 }
 
--(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(NSDictionary*))successfulBlock failed:(void(^)(void))failedBlock
+-(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(TweetResponse*))successfulBlock failed:(void(^)(NSError*))failedBlock
 {
     NSString *tokenHeader = [NSString stringWithFormat:@"Bearer %@", self.token];
     
@@ -147,30 +127,25 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     [request addValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:tokenHeader forHTTPHeaderField:@"Authorization"];
     
-    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if([(NSHTTPURLResponse*)response statusCode]/200 == 0 || error) {
+    
+    [self resumeTaskWithRequest:request successful:^(id object) {
+        NSError *error = nil;
+        TweetResponse *response = [[TweetResponse alloc] initWithObject:object error:&error];
+        if(error) {
             if(failedBlock) {
-                failedBlock();
+                failedBlock(error);
             }
             return;
         }
         
-        NSError* sError = nil;
-        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&sError];
-        if(object == nil) {return;}
-        
-        if(![object isKindOfClass:NSDictionary.class]) {return;}
-        if(object[@"errors"]) {
-            if(failedBlock) {
-                failedBlock();
-            }
-        } else {
-            if(successfulBlock) {
-                successfulBlock(object);
-            }
+        if(successfulBlock) {
+            successfulBlock(response);
+        }
+    } failed:^(NSError *error) {
+        if(failedBlock) {
+            failedBlock(error);
         }
     }];
-    [task resume];
 }
 
 #pragma mark - Properties
@@ -214,6 +189,26 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     NSData *data = [[NSString stringWithFormat:@"%@:%@", escapingTwitterKey, escapingTwitterSecret] dataUsingEncoding:NSUTF8StringEncoding];
     
     return [data base64EncodedStringWithOptions:0];
+}
+
+-(void)resumeTaskWithRequest:(NSURLRequest*)request successful:(void(^)(id))successful failed:(void(^)(NSError*))failed
+{
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if([(NSHTTPURLResponse*)response statusCode]/200 == 0 || error) {
+            if(failed) {
+                failed(error);
+            }
+            return;
+        }
+        
+        NSError* sError = nil;
+        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&sError];
+        
+        if(successful) {
+            successful(object);
+        }
+    }];
+    [task resume];
 }
 
 @end

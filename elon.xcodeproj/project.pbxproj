@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		72085B3D2212040A009D9A20 /* LDetailTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72085B3C2212040A009D9A20 /* LDetailTweet.m */; };
+		72226BBA22141D7D00686799 /* NetworkManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72226BB922141D7D00686799 /* NetworkManagerTest.m */; };
+		72226BC42214320900686799 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72226BC32214320900686799 /* NetworkManager.m */; };
+		72226BC52214320900686799 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72226BC32214320900686799 /* NetworkManager.m */; };
 		724495862211A7B80001AFAF /* Tweet+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */; };
 		724495872211A7B80001AFAF /* Tweet+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495852211A7B80001AFAF /* Tweet+CoreDataClass.m */; };
 		7244958A2211A9520001AFAF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 724495892211A9520001AFAF /* DataManager.m */; };
@@ -22,17 +25,41 @@
 		729A0D78220DB85B00724AB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D77220DB85B00724AB6 /* main.m */; };
 		729A0D7F220DB9CD00724AB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 729A0D7E220DB9CD00724AB6 /* Localizable.strings */; };
 		729A0D84220DBFCF00724AB6 /* LTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D83220DBFCF00724AB6 /* LTweet.m */; };
-		729A0D87220DC43C00724AB6 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D86220DC43C00724AB6 /* NetworkManager.m */; };
 		729A0D8A2211615500724AB6 /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729A0D892211615500724AB6 /* Environment.plist */; };
 		729A0D8D2211620000724AB6 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D8C2211620000724AB6 /* Environment.m */; };
 		729A0D90221178F900724AB6 /* CDStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D8F221178F900724AB6 /* CDStorage.m */; };
 		729A0D932211892300724AB6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729A0D922211892300724AB6 /* CoreData.framework */; };
 		729A0D98221189F600724AB6 /* elon.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 729A0D97221189F600724AB6 /* elon.xcdatamodel */; };
+		72DF70842216B88F00568641 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70832216B88F00568641 /* Response.m */; };
+		72DF70872216B9B300568641 /* AuthenticationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70862216B9B300568641 /* AuthenticationResponse.m */; };
+		72DF70892216BBFA00568641 /* AuthenticationResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70882216BBFA00568641 /* AuthenticationResponseTest.m */; };
+		72DF708A2216BC5900568641 /* AuthenticationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70862216B9B300568641 /* AuthenticationResponse.m */; };
+		72DF708B2216BC8000568641 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70832216B88F00568641 /* Response.m */; };
+		72DF708D2216C94100568641 /* ResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF708C2216C94100568641 /* ResponseTest.m */; };
+		72DF70902216CA2900568641 /* TweetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF708F2216CA2900568641 /* TweetResponse.m */; };
+		72DF70922216FC8F00568641 /* TweetResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70912216FC8F00568641 /* TweetResponseTest.m */; };
+		72DF70932216FCAE00568641 /* TweetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF708F2216CA2900568641 /* TweetResponse.m */; };
+		72DF7096221704F800568641 /* TweetListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF7095221704F800568641 /* TweetListResponse.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72226BBC22141D7D00686799 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 729A0D5D220DB85900724AB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 729A0D64220DB85900724AB6;
+			remoteInfo = elon;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		72085B3B2212040A009D9A20 /* LDetailTweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LDetailTweet.h; sourceTree = "<group>"; };
 		72085B3C2212040A009D9A20 /* LDetailTweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDetailTweet.m; sourceTree = "<group>"; };
+		72226BB722141D7D00686799 /* elonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72226BB922141D7D00686799 /* NetworkManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManagerTest.m; sourceTree = "<group>"; };
+		72226BBB22141D7D00686799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72226BC22214320900686799 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		72226BC32214320900686799 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		724495822211A7B80001AFAF /* Tweet+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataProperties.h"; sourceTree = "<group>"; };
 		724495832211A7B80001AFAF /* Tweet+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tweet+CoreDataProperties.m"; sourceTree = "<group>"; };
 		724495842211A7B80001AFAF /* Tweet+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -62,8 +89,6 @@
 		729A0D7E220DB9CD00724AB6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		729A0D82220DBFCF00724AB6 /* LTweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTweet.h; sourceTree = "<group>"; };
 		729A0D83220DBFCF00724AB6 /* LTweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTweet.m; sourceTree = "<group>"; };
-		729A0D85220DC43C00724AB6 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
-		729A0D86220DC43C00724AB6 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		729A0D892211615500724AB6 /* Environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		729A0D8B2211620000724AB6 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		729A0D8C2211620000724AB6 /* Environment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
@@ -71,9 +96,27 @@
 		729A0D8F221178F900724AB6 /* CDStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDStorage.m; sourceTree = "<group>"; };
 		729A0D922211892300724AB6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		729A0D97221189F600724AB6 /* elon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = elon.xcdatamodel; sourceTree = "<group>"; };
+		72DF70822216B88F00568641 /* Response.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
+		72DF70832216B88F00568641 /* Response.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
+		72DF70852216B9B300568641 /* AuthenticationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationResponse.h; sourceTree = "<group>"; };
+		72DF70862216B9B300568641 /* AuthenticationResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationResponse.m; sourceTree = "<group>"; };
+		72DF70882216BBFA00568641 /* AuthenticationResponseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationResponseTest.m; sourceTree = "<group>"; };
+		72DF708C2216C94100568641 /* ResponseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResponseTest.m; sourceTree = "<group>"; };
+		72DF708E2216CA2900568641 /* TweetResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetResponse.h; sourceTree = "<group>"; };
+		72DF708F2216CA2900568641 /* TweetResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetResponse.m; sourceTree = "<group>"; };
+		72DF70912216FC8F00568641 /* TweetResponseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetResponseTest.m; sourceTree = "<group>"; };
+		72DF7094221704F800568641 /* TweetListResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetListResponse.h; sourceTree = "<group>"; };
+		72DF7095221704F800568641 /* TweetListResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetListResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		72226BB422141D7D00686799 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		729A0D62220DB85900724AB6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,6 +128,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72226BB822141D7D00686799 /* elonTests */ = {
+			isa = PBXGroup;
+			children = (
+				72DF70912216FC8F00568641 /* TweetResponseTest.m */,
+				72DF708C2216C94100568641 /* ResponseTest.m */,
+				72DF70882216BBFA00568641 /* AuthenticationResponseTest.m */,
+				72226BB922141D7D00686799 /* NetworkManagerTest.m */,
+				72226BBB22141D7D00686799 /* Info.plist */,
+			);
+			path = elonTests;
+			sourceTree = "<group>";
+		};
+		72226BC12214320900686799 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				72DF70812216B80300568641 /* Response */,
+				72226BC22214320900686799 /* NetworkManager.h */,
+				72226BC32214320900686799 /* NetworkManager.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		724495902211C1BA0001AFAF /* GUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				729A0D67220DB85900724AB6 /* elon */,
+				72226BB822141D7D00686799 /* elonTests */,
 				729A0D66220DB85900724AB6 /* Products */,
 				729A0D912211892200724AB6 /* Frameworks */,
 			);
@@ -144,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				729A0D65220DB85900724AB6 /* elon.app */,
+				72226BB722141D7D00686799 /* elonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +218,7 @@
 		729A0D67220DB85900724AB6 /* elon */ = {
 			isa = PBXGroup;
 			children = (
+				724495902211C1BA0001AFAF /* GUI */,
 				729A0D80220DBFB700724AB6 /* Data */,
 				729A0D68220DB85900724AB6 /* AppDelegate.h */,
 				729A0D69220DB85900724AB6 /* AppDelegate.m */,
@@ -165,11 +233,9 @@
 		729A0D80220DBFB700724AB6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				724495902211C1BA0001AFAF /* GUI */,
+				72226BC12214320900686799 /* Network */,
 				729A0D882211610800724AB6 /* Environment */,
 				729A0D81220DBFB700724AB6 /* Model */,
-				729A0D85220DC43C00724AB6 /* NetworkManager.h */,
-				729A0D86220DC43C00724AB6 /* NetworkManager.m */,
 				729A0D8E221178F900724AB6 /* CDStorage.h */,
 				729A0D8F221178F900724AB6 /* CDStorage.m */,
 				724495882211A9520001AFAF /* DataManager.h */,
@@ -212,9 +278,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		72DF70812216B80300568641 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				72DF70822216B88F00568641 /* Response.h */,
+				72DF70832216B88F00568641 /* Response.m */,
+				72DF70852216B9B300568641 /* AuthenticationResponse.h */,
+				72DF70862216B9B300568641 /* AuthenticationResponse.m */,
+				72DF708E2216CA2900568641 /* TweetResponse.h */,
+				72DF708F2216CA2900568641 /* TweetResponse.m */,
+				72DF7094221704F800568641 /* TweetListResponse.h */,
+				72DF7095221704F800568641 /* TweetListResponse.m */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		72226BB622141D7D00686799 /* elonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72226BC022141D7D00686799 /* Build configuration list for PBXNativeTarget "elonTests" */;
+			buildPhases = (
+				72226BB322141D7D00686799 /* Sources */,
+				72226BB422141D7D00686799 /* Frameworks */,
+				72226BB522141D7D00686799 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72226BBD22141D7D00686799 /* PBXTargetDependency */,
+			);
+			name = elonTests;
+			productName = elonTests;
+			productReference = 72226BB722141D7D00686799 /* elonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		729A0D64220DB85900724AB6 /* elon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 729A0D7B220DB85B00724AB6 /* Build configuration list for PBXNativeTarget "elon" */;
@@ -241,6 +340,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Sergey Skurzhanskiy";
 				TargetAttributes = {
+					72226BB622141D7D00686799 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 729A0D64220DB85900724AB6;
+					};
 					729A0D64220DB85900724AB6 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -260,11 +363,19 @@
 			projectRoot = "";
 			targets = (
 				729A0D64220DB85900724AB6 /* elon */,
+				72226BB622141D7D00686799 /* elonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		72226BB522141D7D00686799 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		729A0D63220DB85900724AB6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,33 +389,98 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		72226BB322141D7D00686799 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72DF70922216FC8F00568641 /* TweetResponseTest.m in Sources */,
+				72DF70892216BBFA00568641 /* AuthenticationResponseTest.m in Sources */,
+				72DF70932216FCAE00568641 /* TweetResponse.m in Sources */,
+				72226BC52214320900686799 /* NetworkManager.m in Sources */,
+				72DF708B2216BC8000568641 /* Response.m in Sources */,
+				72DF708A2216BC5900568641 /* AuthenticationResponse.m in Sources */,
+				72DF708D2216C94100568641 /* ResponseTest.m in Sources */,
+				72226BBA22141D7D00686799 /* NetworkManagerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		729A0D61220DB85900724AB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72DF70872216B9B300568641 /* AuthenticationResponse.m in Sources */,
 				729A0D84220DBFCF00724AB6 /* LTweet.m in Sources */,
 				7244959F2211C2200001AFAF /* DetailTweetView.m in Sources */,
 				724495982211C1BA0001AFAF /* TweetListVM.m in Sources */,
 				729A0D8D2211620000724AB6 /* Environment.m in Sources */,
 				72085B3D2212040A009D9A20 /* LDetailTweet.m in Sources */,
+				72DF70902216CA2900568641 /* TweetResponse.m in Sources */,
 				729A0D98221189F600724AB6 /* elon.xcdatamodel in Sources */,
+				72DF70842216B88F00568641 /* Response.m in Sources */,
 				724495872211A7B80001AFAF /* Tweet+CoreDataClass.m in Sources */,
 				7244959C2211C1F20001AFAF /* DetailTweetController.m in Sources */,
 				729A0D78220DB85B00724AB6 /* main.m in Sources */,
+				72DF7096221704F800568641 /* TweetListResponse.m in Sources */,
 				724495972211C1BA0001AFAF /* TweetListViewController.m in Sources */,
 				724495AD2211D5F20001AFAF /* AuthenticationController.m in Sources */,
 				724495862211A7B80001AFAF /* Tweet+CoreDataProperties.m in Sources */,
 				729A0D90221178F900724AB6 /* CDStorage.m in Sources */,
-				729A0D87220DC43C00724AB6 /* NetworkManager.m in Sources */,
 				7244958A2211A9520001AFAF /* DataManager.m in Sources */,
 				729A0D6A220DB85900724AB6 /* AppDelegate.m in Sources */,
+				72226BC42214320900686799 /* NetworkManager.m in Sources */,
 				724495A32211C9A90001AFAF /* DetailTweetVM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		72226BBD22141D7D00686799 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 729A0D64220DB85900724AB6 /* elon */;
+			targetProxy = 72226BBC22141D7D00686799 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		72226BBE22141D7D00686799 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZD4Q8XJ52;
+				INFOPLIST_FILE = elonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.elonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/elon.app/elon";
+			};
+			name = Debug;
+		};
+		72226BBF22141D7D00686799 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZD4Q8XJ52;
+				INFOPLIST_FILE = elonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.elonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/elon.app/elon";
+			};
+			name = Release;
+		};
 		729A0D79220DB85B00724AB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -460,6 +636,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		72226BC022141D7D00686799 /* Build configuration list for PBXNativeTarget "elonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72226BBE22141D7D00686799 /* Debug */,
+				72226BBF22141D7D00686799 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		729A0D60220DB85900724AB6 /* Build configuration list for PBXProject "elon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
