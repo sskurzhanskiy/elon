@@ -11,6 +11,7 @@
 #import "TweetListInterface.h"
 
 @class DataManager;
+@protocol DetailTweetInterface;
 
 NS_ASSUME_NONNULL_BEGIN
 

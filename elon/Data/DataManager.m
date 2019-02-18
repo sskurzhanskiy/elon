@@ -12,6 +12,7 @@
 #import "CDStorage.h"
 #import "Tweet+CoreDataProperties.h"
 #import "TweetResponse.h"
+#import "TweetListResponse.h"
 
 @interface DataManager()
 
@@ -43,7 +44,7 @@
     return self;
 }
 
--(void)authenticationWithCompletion:(void(^)(void))successfulBlock failed:(void(^)(void))failedBlock
+-(void)authenticationWithCompletion:(void(^)(void))successfulBlock failed:(void(^)(NSError*))failedBlock
 {
     [self.networkManager authenticationWithCompletion:^{
         if(successfulBlock) {
@@ -51,39 +52,37 @@
         }
     } failed:^(NSError *error){
         if(failedBlock) {
-            failedBlock();
+            failedBlock(error);
         }
     }];
 }
 
--(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<Tweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock
-{
-    __weak typeof(self) weakSelf = self;
-    [self.networkManager loadTweetUser:screenUser count:count successful:^(NSArray *array) {
-        for(NSDictionary *tweetSrc in array) {
-            [weakSelf.dataStorage addTweet:tweetSrc];
-        }
-        
-        if(successfulBlock) {
-            successfulBlock([weakSelf.dataStorage tweetsCount:count]);
-        }
-    } failed:^{
-        if(failedBlock) {
-            failedBlock();
-        }
-    }];
-}
-
--(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(Tweet*tweet))successfulBlock failed:(void(^)(NSError*))failedBlock
+-(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(TweetResponse*tResponse))successfulBlock failed:(void(^)(NSError*))failedBlock;
 {
     __weak typeof(self) weakSelf = self;
     [self.networkManager loadTweetWithSid:tweetSid successful:^(TweetResponse * tweetResponse) {
         [weakSelf.dataStorage addTweet:tweetResponse];
         
         if(successfulBlock) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                successfulBlock([weakSelf.dataStorage tweetWithSid:tweetSid]);
-            });
+            successfulBlock(tweetResponse);
+        }
+    } failed:^(NSError *error){
+        if(failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+-(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<TweetResponse*>*tResponse))successfulBlock failed:(void(^)(NSError*))failedBlock;
+{
+    __weak typeof(self) weakSelf = self;
+    [self.networkManager loadTweetUser:screenUser count:count successful:^(TweetListResponse *listResponse) {
+        for(TweetResponse *tResponse in listResponse.tweetList) {
+            [weakSelf.dataStorage addTweet:tResponse];
+        }
+        
+        if(successfulBlock) {
+            successfulBlock(listResponse.tweetList);
         }
     } failed:^(NSError *error){
         if(failedBlock) {

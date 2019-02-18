@@ -8,9 +8,22 @@
 
 #import "LTweet.h"
 
+#import "TweetResponse.h"
 #import "Tweet+CoreDataProperties.h"
 
-static NSDateFormatter* dateFormatter()
+static NSDateFormatter* serverDateFormatter()
+{
+    static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"E MMM d HH:mm:ss Z yyyy";
+        dateFormatter.timeZone = [NSTimeZone localTimeZone];
+    });
+    return dateFormatter;
+}
+
+static NSDateFormatter* clientDateFormatter()
 {
     static NSDateFormatter *dateFormatter = nil;
     static dispatch_once_t onceToken = 0;
@@ -22,23 +35,44 @@ static NSDateFormatter* dateFormatter()
     return dateFormatter;
 }
 
+@interface LTweet()
+
+@property (nonatomic, copy, readwrite) NSString *sid;
+@property (nonatomic, copy, readwrite) NSString *text;
+@property (nonatomic, copy, readwrite) NSString *customDateString;
+
+@end
+
 @implementation LTweet
+
+-(instancetype)initWithTweetResponse:(TweetResponse*)tResponse
+{
+    if(self = [super init]) {
+        self.sid = tResponse.sid;
+        self.text = tResponse.text;
+        
+        NSDate *date = [serverDateFormatter() dateFromString:tResponse.createdAt];
+        self.customDateString = [clientDateFormatter() stringFromDate:date];
+    }
+    
+    return self;
+}
 
 -(instancetype)initWithTweet:(Tweet*)tweet;
 {
     if(self = [super init]) {
         self.sid = tweet.sid;
         self.text = tweet.text;
-        self.customDateString = [self timeStampToString:tweet.timestamp];
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:tweet.timestamp];
+        self.customDateString = [clientDateFormatter() stringFromDate:date];
     }
     
     return self;
 }
 
--(NSString*)timeStampToString:(double)timestamp
-{
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    return [dateFormatter() stringFromDate:date];
+-(NSString*)description {
+    return [NSString stringWithFormat:@"sid: %@ text: %@ date: %@", self.sid, self.text, self.customDateString];
 }
 
 @end

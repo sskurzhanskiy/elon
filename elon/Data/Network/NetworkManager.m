@@ -11,6 +11,7 @@
 #import "Environment.h"
 #import "AuthenticationResponse.h"
 #import "TweetResponse.h"
+#import "TweetListResponse.h"
 
 static NSString *tokenUDKey = @"token-user-defaults-key";
 
@@ -45,14 +46,6 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
 
 -(void)authenticationWithCompletion:(void(^ _Nullable )(void))successfulBlock failed:(void(^)(NSError*))failedBlock
 {
-    if(self.token) {
-        if(successfulBlock) {
-            successfulBlock();
-        }
-        
-        return;
-    }
-    
     NSString *encodingToken = [self encodingTwitterToken];
     NSString *httpHeaderValue = [NSString stringWithFormat:@"Basic %@", encodingToken];
     
@@ -86,48 +79,38 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
     }];
 }
 
--(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray*))successfulBlock failed:(void(^)(void))failedBlock {
-    NSString *tokenHeader = [NSString stringWithFormat:@"Bearer %@", self.token];
-    
+-(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(TweetListResponse*))successfulBlock failed:(void(^)(NSError*))failedBlock
+{
     NSURLComponents *urlComponent = [NSURLComponents componentsWithString:[self urlForEndpoint:TwitterApiEndpointTimelines]];
-    NSURLQueryItem *userItem = [[NSURLQueryItem alloc] initWithName:@"screen_name" value:screenUser];
-    NSURLQueryItem *countItem = [[NSURLQueryItem alloc] initWithName:@"count" value:[NSString stringWithFormat:@"%ld", (long)count]];
-    urlComponent.queryItems = @[userItem, countItem];
+    urlComponent.queryItems = [self queryItemsForDictionary:@{@"screen_name":screenUser,
+                                                              @"count":[NSString stringWithFormat:@"%ld", (long)count]
+                                                              }];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlComponent.URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-    [request setHTTPMethod:@"GET"];
-    [request addValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:tokenHeader forHTTPHeaderField:@"Authorization"];
-
+    NSURLRequest *request = [self getAuthenticatedRequestWithUrlComponent:urlComponent];
     [self resumeTaskWithRequest:request successful:^(id object) {
+        NSError *error = nil;
+        TweetListResponse *listResponse = [[TweetListResponse alloc] initWithObject:object error:&error];
+        if(error) {
+            if(failedBlock) {
+                failedBlock(error);
+            }
+        }
         if(successfulBlock) {
-            successfulBlock((NSArray*)object);
+            successfulBlock(listResponse);
         }
     } failed:^(NSError *error) {
         if(failedBlock) {
-            failedBlock();
+            failedBlock(error);
         }
     }];
 }
 
 -(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(TweetResponse*))successfulBlock failed:(void(^)(NSError*))failedBlock
 {
-    NSString *tokenHeader = [NSString stringWithFormat:@"Bearer %@", self.token];
-    
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.numberStyle = NSNumberFormatterDecimalStyle;
-    NSNumber *tweetNumber = [formatter numberFromString:tweetSid];
-    
     NSURLComponents *urlComponent = [NSURLComponents componentsWithString:[self urlForEndpoint:TwitterApiEndpointShow]];
-    NSURLQueryItem *tweeId = [[NSURLQueryItem alloc] initWithName:@"id" value:[NSString stringWithFormat:@"%@", tweetNumber]];
-    urlComponent.queryItems = @[tweeId];
+    urlComponent.queryItems = [self queryItemsForDictionary:@{@"id": tweetSid}];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlComponent.URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-    [request setHTTPMethod:@"GET"];
-    [request addValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:tokenHeader forHTTPHeaderField:@"Authorization"];
-    
-    
+    NSURLRequest *request = [self getAuthenticatedRequestWithUrlComponent:urlComponent];
     [self resumeTaskWithRequest:request successful:^(id object) {
         NSError *error = nil;
         TweetResponse *response = [[TweetResponse alloc] initWithObject:object error:&error];
@@ -164,6 +147,28 @@ typedef NS_ENUM(NSInteger, TwitterApiEndpoint) {
 }
 
 #pragma mark - Private methods
+
+-(NSURLRequest*)getAuthenticatedRequestWithUrlComponent:(NSURLComponents*)urlComponent
+{
+    NSString *tokenHeader = self.token ? [NSString stringWithFormat:@"Bearer %@", self.token] : @"";
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlComponent.URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
+    [request setHTTPMethod:@"GET"];
+    [request addValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:tokenHeader forHTTPHeaderField:@"Authorization"];
+    
+    return [request copy];
+}
+
+-(NSArray<NSURLQueryItem*>*)queryItemsForDictionary:(NSDictionary*)params
+{
+    NSMutableArray<NSURLQueryItem*> *items = [NSMutableArray array];
+    for(NSString *key in params.allKeys) {
+        NSURLQueryItem *query = [[NSURLQueryItem alloc] initWithName:key value:params[key]];
+        [items addObject:query];
+    }
+    
+    return [items copy];
+}
 
 -(NSString*)urlForEndpoint:(TwitterApiEndpoint)endpoint {
     NSString *result = nil;

@@ -31,7 +31,7 @@
     self.sid = map[@"id_str"];
     self.text = map[@"text"];
     self.retweetCount = [map[@"retweet_count"] integerValue];
-    self.favoriteCount = [map[@"favourites_count"] integerValue];
+    self.favoriteCount = [map[@"favorite_count"] integerValue];
     
     return self.sid && self.text && self.createdAt;
 }

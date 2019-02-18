@@ -9,8 +9,10 @@
 #import "TweetListVM.h"
 
 #import "DataManager.h"
+#import "TweetResponse.h"
 #import "Tweet+CoreDataProperties.h"
 #import "LTweet.h"
+#import "DetailTweetVM.h"
 
 @interface TweetListVM()
 
@@ -31,12 +33,19 @@
 
 #pragma mark - TweetListInterface
 
--(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<LTweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock
+-(id<DetailTweetInterface>)detailTweetViewModel
 {
-    [self.dataManager loadTweetUser:screenUser count:count successful:^(NSArray<Tweet *> * _Nonnull tweets) {
+    DetailTweetVM *vm = [[DetailTweetVM alloc] init];
+    
+    return vm;
+}
+
+-(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<LTweet*>*tweets))successfulBlock failed:(void(^)(NSError*))failedBlock
+{
+    [self.dataManager loadTweetUser:screenUser count:count successful:^(NSArray<TweetResponse *> * _Nonnull tweetsResponse) {
         NSMutableArray *result = [NSMutableArray array];
-        for(Tweet *tweet in tweets) {
-            LTweet *lTweet = [[LTweet alloc] initWithTweet:tweet];
+        for(TweetResponse *tResponse in tweetsResponse) {
+            LTweet *lTweet = [[LTweet alloc] initWithTweetResponse:tResponse];
             [result addObject:lTweet];
         }
         
@@ -45,9 +54,11 @@
                 successfulBlock([result copy]);
             });
         }
-    } failed:^{
+    } failed:^(NSError *error){
         if(failedBlock) {
-            failedBlock();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failedBlock(error);
+            });
         }
     }];
 }

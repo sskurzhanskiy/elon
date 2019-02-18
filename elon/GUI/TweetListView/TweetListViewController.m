@@ -110,9 +110,8 @@ static NSInteger limitTweets = 5;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     LTweet *tweet = self.tweets[indexPath.row];
-    DetailTweetVM *viewModel = [DetailTweetVM new];
     DetailTweetController *detailController = [[DetailTweetController alloc] initWithTweetSid:tweet.sid];
-    detailController.model = viewModel;
+    detailController.model = [self.model detailTweetViewModel];
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
@@ -124,8 +123,8 @@ static NSInteger limitTweets = 5;
         weakSelf.tweets = tweets;
         [weakSelf.tableView reloadData];
         [weakSelf.refreshHeadController endRefreshing];
-    } failed:^{
-        NSLog(@"failed");
+    } failed:^(NSError *error){
+        NSLog(@"failed %@", error);
         [weakSelf.refreshHeadController endRefreshing];
     }];
 }

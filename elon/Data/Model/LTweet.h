@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class TweetResponse;
 @class Tweet;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LTweet : NSObject
 
 -(instancetype)initWithTweet:(Tweet*)tweet;
+-(instancetype)initWithTweetResponse:(TweetResponse*)tResponse;
 
-@property (nonatomic, copy) NSString *sid;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, assign) double timestamp;
-@property (nonatomic, copy) NSString *customDateString;
+@property (nonatomic, copy, readonly) NSString *sid;
+@property (nonatomic, copy, readonly) NSString *text;
+@property (nonatomic, copy, readonly) NSString *customDateString;
 
 @end
 

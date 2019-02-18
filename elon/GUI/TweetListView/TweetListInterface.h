@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @class LTweet;
+@protocol DetailTweetInterface;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol TweetListInterface <NSObject>
 
--(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<LTweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock;
+-(id<DetailTweetInterface>)detailTweetViewModel;
+
+-(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<LTweet*>*tweets))successfulBlock failed:(void(^)(NSError*))failedBlock;
 -(void)fetchLastTweetsCount:(NSInteger)count completion:(void(^)(NSArray<LTweet*>*tweets))completionBlock;
 
 @end

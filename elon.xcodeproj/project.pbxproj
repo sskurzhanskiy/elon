@@ -40,6 +40,7 @@
 		72DF70922216FC8F00568641 /* TweetResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF70912216FC8F00568641 /* TweetResponseTest.m */; };
 		72DF70932216FCAE00568641 /* TweetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF708F2216CA2900568641 /* TweetResponse.m */; };
 		72DF7096221704F800568641 /* TweetListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF7095221704F800568641 /* TweetListResponse.m */; };
+		72DF7098221A968500568641 /* TweetListResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DF7097221A968500568641 /* TweetListResponseTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		72DF70912216FC8F00568641 /* TweetResponseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetResponseTest.m; sourceTree = "<group>"; };
 		72DF7094221704F800568641 /* TweetListResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetListResponse.h; sourceTree = "<group>"; };
 		72DF7095221704F800568641 /* TweetListResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetListResponse.m; sourceTree = "<group>"; };
+		72DF7097221A968500568641 /* TweetListResponseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetListResponseTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		72226BB822141D7D00686799 /* elonTests */ = {
 			isa = PBXGroup;
 			children = (
+				72DF7097221A968500568641 /* TweetListResponseTest.m */,
 				72DF70912216FC8F00568641 /* TweetResponseTest.m */,
 				72DF708C2216C94100568641 /* ResponseTest.m */,
 				72DF70882216BBFA00568641 /* AuthenticationResponseTest.m */,
@@ -399,6 +402,7 @@
 				72226BC52214320900686799 /* NetworkManager.m in Sources */,
 				72DF708B2216BC8000568641 /* Response.m in Sources */,
 				72DF708A2216BC5900568641 /* AuthenticationResponse.m in Sources */,
+				72DF7098221A968500568641 /* TweetListResponseTest.m in Sources */,
 				72DF708D2216C94100568641 /* ResponseTest.m in Sources */,
 				72226BBA22141D7D00686799 /* NetworkManagerTest.m in Sources */,
 			);

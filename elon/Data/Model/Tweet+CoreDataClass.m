@@ -27,6 +27,7 @@ static NSDateFormatter* dateFormatter()
 
 -(void)updateWithSource:(TweetResponse*)response
 {
+    self.sid = response.sid;
     self.createAt = response.createdAt;
     self.text = response.text;
     self.favoriteCount = (int)response.favoriteCount;

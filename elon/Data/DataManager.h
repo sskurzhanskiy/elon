@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class TweetResponse;
 @class Tweet;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,9 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)instance;
 
--(void)authenticationWithCompletion:(nullable void(^)(void))successfulBlock failed:(nullable void(^)(void))failedBlock;
--(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<Tweet*>*tweets))successfulBlock failed:(void(^)(void))failedBlock;
--(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(Tweet*tweet))successfulBlock failed:(void(^)(NSError*))failedBlock;
+-(void)authenticationWithCompletion:(nullable void(^)(void))successfulBlock failed:(nullable void(^)(NSError*))failedBlock;
+
+-(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(TweetResponse*tResponse))successfulBlock failed:(void(^)(NSError*))failedBlock;
+-(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray<TweetResponse*>*tResponse))successfulBlock failed:(void(^)(NSError*))failedBlock;
+
 -(void)fetchTweetsCount:(NSInteger)count completion:(void(^)(NSArray<Tweet*>*tweets))completionBlock;
 
 @end

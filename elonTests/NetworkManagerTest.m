@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 
 #import "NetworkManager.h"
+#import "TweetResponse.h"
 
 static NSInteger expectionTime = 5;
 
@@ -30,15 +31,69 @@ static NSInteger expectionTime = 5;
 }
 
 - (void)testAuthentication {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"expection"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"authentication"];
 
     [self.nManager authenticationWithCompletion:^{
         [expectation fulfill];
     } failed:^(NSError * _Nonnull error) {
-        XCTFail(@"%@", [error description]);
+        XCTAssertNotNil(error);
         [expectation fulfill];
     }];
 
+    [self waitForExpectationsWithTimeout:expectionTime handler:^(NSError * _Nullable error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testLoadTweetWithSid {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"loadTweet"];
+    
+    [self.nManager loadTweetWithSid:@"850007368138018817" successful:^(TweetResponse * _Nonnull response) {
+        XCTAssert(response);
+        XCTAssert([response.sid isEqualToString:@"850007368138018817"]);
+        XCTAssert(response.text);
+        XCTAssert(response.createdAt);
+        [expectation fulfill];
+    } failed:^(NSError * _Nonnull error) {
+        XCTAssertNotNil(error, @"testLoadTweetWithSid error");
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:expectionTime handler:^(NSError * _Nullable error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testLoadTweetWithSidError {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"loadTweet"];
+    
+    [self.nManager loadTweetWithSid:@"85000736" successful:^(TweetResponse * _Nonnull response) {
+        XCTAssert(response);
+        XCTAssert([response.sid isEqualToString:@"850007368138018817"]);
+        XCTAssert(response.text);
+        XCTAssert(response.createdAt);
+        [expectation fulfill];
+    } failed:^(NSError * _Nonnull error) {
+        XCTAssertNotNil(error, @"testLoadTweetWithSid error");
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:expectionTime handler:^(NSError * _Nullable error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testLoadTweetListSuccessful {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"loadTweetList"];
+    
+    [self.nManager loadTweetUser:@"elonmusk" count:10 successful:^(TweetListResponse * _Nonnull response) {
+        XCTAssert(response);
+        [expectation fulfill];
+    } failed:^(NSError * _Nonnull error) {
+        XCTAssertNotNil(error, @"testLoadTweetWithSid error");
+        [expectation fulfill];
+    }];
+    
     [self waitForExpectationsWithTimeout:expectionTime handler:^(NSError * _Nullable error) {
         XCTAssertNil(error);
     }];

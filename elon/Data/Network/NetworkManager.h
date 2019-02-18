@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class TweetResponse;
+@class TweetListResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NetworkManager : NSObject
 
 -(void)authenticationWithCompletion:(void(^ _Nullable )(void))successfulBlock failed:(void(^)(NSError*))failedBlock;
--(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(NSArray*))successfulBlock failed:(void(^)(void))failedBlock;
+-(void)loadTweetUser:(NSString*)screenUser count:(NSInteger)count successful:(void(^)(TweetListResponse*))successfulBlock failed:(void(^)(NSError*))failedBlock;
 -(void)loadTweetWithSid:(NSString*)tweetSid successful:(void(^)(TweetResponse*))successfulBlock failed:(void(^)(NSError*))failedBlock;
 
 @end

@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class TweetResponse;
 @class Tweet;
 
 @interface LDetailTweet : NSObject
 
+-(instancetype)initWithTweetResponse:(TweetResponse*)tResponse;
 -(instancetype)initWithTweet:(Tweet*)tweet;
 
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, assign) NSInteger favoritesCount;
-@property (nonatomic, assign) NSInteger retweetCount;
+@property (nonatomic, copy, readonly) NSString *sid;
+@property (nonatomic, copy, readonly) NSString *text;
+@property (nonatomic, assign, readonly) NSInteger favoritesCount;
+@property (nonatomic, assign, readonly) NSInteger retweetCount;
 
 @end
